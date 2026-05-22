@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+<title>Shinob3</title>
+
+  <script>
+    EJS_player = "#game";
+    EJS_core = "segaMD";                       // Sega Genesis / Mega Drive
+    EJS_gameUrl = "roms/shinob3.bin"; // ajuste o nome da sua ROM
+    EJS_pathtodata = "https://cdn.emulatorjs.org/latest/data/";
+    EJS_startOnLoaded = true;
+    EJS_fullscreenOnLoaded = false;
+  </script>
+
+  <script src="https://cdn.emulatorjs.org/latest/data/loader.js"></script>
+
+<style>
+  html, body {
+    margin: 0;
+    background: black;
+    height: 100%;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+  }
+
+  #game {
+    width: 100vw;
+    height: 100vh;
+  }
+
+  /* Mini‑box lisa, sem textura */
+  #overlay {
+    position: fixed;
+    inset: 0;
+    background: rgba(0,0,0,0.85);
+    color: white;
+    font-size: 26px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    z-index: 10;
+    cursor: pointer;
+    border-radius: 12px;
+  }
+
+  /* Botão centralizado */
+  #overlay span {
+    padding: 18px 28px;
+    background: #222;
+    border: 2px solid #fff;
+    border-radius: 10px;
+  }
+
+  #overlay:hover span {
+    background: #333;
+  }
+</style>
+</head>
+
+<body>
+  <div id="overlay"><span>▶ TOCAR PARA JOGAR</span></div>
+
+  <div id="game"></div>
+
+  <script>
+    const overlay = document.getElementById("overlay");
+    overlay.addEventListener("click", () => {
+      overlay.remove();
+      document.documentElement.requestFullscreen?.();
+    });
+  </script>
+</body>
+</html>
